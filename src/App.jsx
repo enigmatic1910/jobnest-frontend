@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Profile from "./pages/Profile";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
     return (
@@ -21,12 +22,12 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Navigate to="/home" />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/jobs" element={<Jobs />} />
-                    <Route path="/jobs/:id" element={<JobDetails />} />
-                    <Route path="/saved-jobs" element={<SavedJobs />} />
+                    <Route path="/jobs" element={<RequireAuth><Jobs /></RequireAuth>} />
+                    <Route path="/jobs/:id" element={<RequireAuth><JobDetails /></RequireAuth>} />
+                    <Route path="/saved-jobs" element={<RequireAuth><SavedJobs /></RequireAuth>} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
                 </Routes>
             </main>
 
